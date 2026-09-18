@@ -8,9 +8,9 @@ One row per product across iOS, Android and web. For each product: the platforms
 
 | Measure | Value |
 |---|---|
-| Products | 63 (4 dating simulators, 15 companions, 44 character chat platforms) |
-| Platform coverage | 52 on iOS, 40 on Android, 28 on the web. 18 products ship on all three, 21 on two, 24 on one. |
-| Mechanic flags | 8 per product, 504 cells, 23 true. 15 products document at least one mechanic in their listing. |
+| Products | 87 (7 dating simulators, 23 companions, 57 character chat platforms) |
+| Platform coverage | 71 on iOS, 58 on Android, 28 on the web. 18 products ship on all three, 34 on two, 35 on one. |
+| Mechanic flags | 8 per product, 696 cells, 38 true. 28 products document at least one mechanic in their listing. |
 | Scored products | 48 (App Store products with ratings in at least 10 of 24 storefronts) |
 | Capture window | App Store data 2026-09-11 to 2026-09-17, platform and web checks 2026-09-18 |
 
@@ -18,7 +18,7 @@ One row per product across iOS, Android and web. For each product: the platforms
 
 | File | Rows | What it is |
 |---|---|---|
-| `apps.csv`, `apps.json` | 63 | Category, platforms, store and web URLs, developer, eight mechanic flags with the listing sentence for each, pricing, ratings. |
+| `apps.csv`, `apps.json` | 87 | Category, platforms, store and web URLs, developer, eight mechanic flags with the listing sentence for each, pricing, ratings. |
 | `inputs.csv` | 48 | The raw inputs behind the score: weighted rating, rating count, newest-review average and count, cohort median, integrity penalty, days since update, feature checks, quality codes. |
 | `scores.csv` | 48 | Output of `score.py`: six signals and their mean, sorted by score. |
 | `score.py` | | Recomputes `scores.csv` from `inputs.csv`. Python 3 standard library, no dependencies. |
