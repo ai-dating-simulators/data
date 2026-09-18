@@ -1,5 +1,7 @@
 # AI dating simulator and companion app data
 
+[![verify](https://github.com/ai-dating-simulators/data/actions/workflows/verify.yml/badge.svg)](https://github.com/ai-dating-simulators/data/actions/workflows/verify.yml)
+
 Open data behind [Awesome AI Dating Simulators](https://github.com/ai-dating-simulators/awesome-ai-dating-simulators).
 
 One row per product across iOS, Android and web. For each product: the platforms it ships on, the relationship mechanics its own store listing documents (with the sentence quoted), store ratings with capture dates, and a six-signal score that `score.py` recomputes from the published inputs.

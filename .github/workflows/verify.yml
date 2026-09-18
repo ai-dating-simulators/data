@@ -1,0 +1,29 @@
+name: verify
+on: [push, pull_request]
+jobs:
+  scores:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recompute scores.csv and require no diff
+        run: |
+          python3 score.py
+          git diff --exit-code scores.csv
+      - name: Check apps.csv shape and quotes
+        run: |
+          python3 - <<'PY'
+          import csv, sys
+          rows = list(csv.DictReader(open("apps.csv", newline="", encoding="utf-8")))
+          mech = ["meter","message_scoring","ghost","fail_state","progression","proactive","availability","memory"]
+          bad = []
+          for r in rows:
+              plats = r["platforms"].split(";")
+              if not set(plats) <= {"ios","android","web"}: bad.append((r["slug"], "platforms"))
+              for p, col in (("ios","ios_url"),("android","android_url"),("web","web_url")):
+                  if bool(r[col]) != (p in plats): bad.append((r["slug"], col))
+              for m in mech:
+                  if r[m] not in ("true","false"): bad.append((r["slug"], m))
+                  if r[m] == "true" and (m + ': "') not in r["notes"]: bad.append((r["slug"], m + " quote"))
+          print(len(rows), "rows;", "problems:", bad)
+          sys.exit(1 if bad else 0)
+          PY
